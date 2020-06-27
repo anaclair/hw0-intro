@@ -18,7 +18,7 @@ unsigned int texture;
  * Write your own matrix vector multiplication function. Do not use the built-in CGL function!
  */
 Vector3D mult(Matrix3x3 mat, Vector3D input) {
-    return input; /* TODO */
+    return input[0] * mat[0] + input[1] * mat[1] + input[2] * mat[2];
 }
 
 class QuadDrawer : public Renderer {
@@ -89,13 +89,13 @@ class QuadDrawer : public Renderer {
     glTexCoord2f(0,0);
     glVertex3f(a_trans[0], a_trans[1], a_trans[2]);
     /* TODO: change the (0,1) below to (0,.1) to zoom into the texture to see changes. */
-    glTexCoord2f(0,1);
+    glTexCoord2f(0,0.1);
     glVertex3f(b_trans[0], b_trans[1], b_trans[2]);
     /* TODO: change the (1,1) below to (.1,.1) to zoom into the texture to see changes. */
-    glTexCoord2f(1,1);
+    glTexCoord2f(0.1,0.1);
     glVertex3f(c_trans[0], c_trans[1], c_trans[2]);
     /* TODO: change the (1,0) to (.1,0) to zoom into the texture to see changes. */
-    glTexCoord2f(1,0);
+    glTexCoord2f(0.1,0);
     glVertex3f(d_trans[0], d_trans[1], d_trans[2]);
     glDeleteTextures(1, &texture);
     glDisable(GL_TEXTURE_2D);
